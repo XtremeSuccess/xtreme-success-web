@@ -1,18 +1,29 @@
-<section class="hero is-dark is-medium is-fullheight-with-navbar">
+<section class="hero is-dark is-medium is-fullheight-with-navbar has-background">
+    <img alt="Education" class="hero-background is-transparent" src="assets/img/pablo-education.png" />
     <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title">Welcome to Xtreme Success</h1>
             <h2 class="subtitle">We make dreams come true.</h2>
         </div>
     </div>
-    <div class="hero-foot">
-        <nav class="tabs">
-            <div class="container">
-                <ul>
-                    <li><a href="#products"><strong>Products</strong></a></li>
-                    <li><a href="#courses"><strong>Courses</strong></a></li>
-                </ul>
+</section>
+
+<section class="section">
+    <div class="container is-fluid has-text-centered">
+        <div class="columns level">
+            <div class="column" *ngFor="let course of courses">
+                <div class="card is-shady">
+                    <div class="card-content">
+                        <div class="content">
+                            <h3 class="has-text-weight-bold">{{course.name}}</h3>
+                            <h2 class="has-text-weight-semibold"><b>Rs. {{course.price}}</b></h2>
+                            {{course.description}}
+                            <br /><br />
+                            <p class="subject-holder"><b>{{course | subjectString}}</b></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
+        </div>
     </div>
 </section>
