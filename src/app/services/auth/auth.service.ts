@@ -12,9 +12,17 @@ export class AuthService {
     private readonly http: HttpClient,
   ) { }
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
     return this.http.post(`${this.url}/auth/local`, {
-      identifier: username,
+      identifier: email,
+      password: password
+    });
+  }
+
+  register(username: string, email: string, password: string) {
+    return this.http.post(`${this.url}/auth/local/register`, {
+      username: username,
+      email: email,
       password: password
     });
   }

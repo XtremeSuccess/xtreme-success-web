@@ -1,1 +1,52 @@
-<p>register works!</p>
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <h2 class="title is-2">Register</h2>
+                    <h3 class="subtitle is-3">for Xtreme Success</h3>
+                    <form action="" class="box">
+                        <div class="field">
+                            <label for="" class="label">Name</label>
+                            <div class="control">
+                                <input name="email" [(ngModel)]="username" type="text" placeholder="Bob Smith"
+                                    class="input" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="" class="label">Email</label>
+                            <div class="control">
+                                <input name="email" [(ngModel)]="email" type="email" placeholder="bobsmith@gmail.com"
+                                    class="input" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="" class="label">Password</label>
+                            <div class="control">
+                                <input name="password" [(ngModel)]="password" type="password" placeholder="*******"
+                                    class="input" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="" class="label">Confirm Password</label>
+                            <div class="control">
+                                <input name="password" [(ngModel)]="confirm_password" type="password"
+                                    placeholder="*******" class="input" required>
+                            </div>
+                        </div>
+                        <div class="field">
+
+                        </div>
+                        <div class="field">
+                            <button class="button is-success" (click)="register()">
+                                Register
+                            </button>
+                        </div>
+                        <p><a routerLink="/auth/forms/login">Already have an account? Login!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

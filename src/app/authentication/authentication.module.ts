@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ngx-custom-validators';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication.component';
 import { LoginComponent } from './login/login.component';
@@ -13,7 +14,8 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ]
 })
 export class AuthenticationModule { }
