@@ -1,3 +1,4 @@
+import { LandingComponent } from './landing/landing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -6,11 +7,16 @@ const routes: Routes = [
   {
     path: 'main',
     component: DashboardComponent,
-    children: []
+    children: [
+      {
+        path: 'landing',
+        component: LandingComponent
+      }
+    ]
   },
   {
     path: '',
-    redirectTo: '/dashboard/main',
+    redirectTo: '/dashboard/main/landing',
     pathMatch: 'full'
   }
 ];

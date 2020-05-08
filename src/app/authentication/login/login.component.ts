@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.email, this.password).subscribe((auth: Auth) => {
-      console.log(auth.jwt);
+      localStorage.setItem('access_token', auth.jwt);
+      this.router.navigate(['/dashboard']);
     }, (error) => {
       console.log(error)
     });
