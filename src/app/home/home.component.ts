@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  isAuthenticated: boolean;
+  constructor(
+    private readonly authService: AuthService
+  ) { }
 
   ngOnInit(): void {
-    console.log('Home Component Loaded');
+    this.isAuthenticated = this.authService.isAuthenticated();
   }
 
 }
