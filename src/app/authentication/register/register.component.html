@@ -5,41 +5,30 @@
                 <div class="column is-5-tablet is-4-desktop is-3-widescreen">
                     <h2 class="title is-2">Register</h2>
                     <h3 class="subtitle is-3">for Xtreme Success</h3>
-                    <form action="" class="box">
+                    <form action="" class="box" [formGroup]="form">
                         <div class="field">
                             <label for="" class="label">Name</label>
                             <div class="control">
                                 <input name="email" [(ngModel)]="username" type="text" placeholder="Bob Smith"
-                                    class="input" required>
+                                    class="input" formControlName="username" required>
                             </div>
                         </div>
                         <div class="field">
                             <label for="" class="label">Email</label>
                             <div class="control">
                                 <input name="email" [(ngModel)]="email" type="email" placeholder="bobsmith@gmail.com"
-                                    class="input" required>
+                                    class="input" formControlName="email" required>
                             </div>
                         </div>
                         <div class="field">
                             <label for="" class="label">Password</label>
                             <div class="control">
                                 <input name="password" [(ngModel)]="password" type="password" placeholder="*******"
-                                    class="input" required>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label for="" class="label">Confirm Password</label>
-                            <div class="control">
-                                <input name="password" [(ngModel)]="confirm_password" type="password"
-                                    placeholder="*******" class="input" required>
+                                    class="input" formControlName="password" required>
                             </div>
                         </div>
                         <div class="field">
-
-                        </div>
-                        <div class="field">
-                            <button class="button is-success" (click)="register()">
+                            <button class="button is-success" [disabled]="!form.valid" (click)="register()">
                                 Register
                             </button>
                         </div>
