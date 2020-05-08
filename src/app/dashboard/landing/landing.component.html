@@ -1,1 +1,64 @@
-<p>landing works!</p>
+<section class="hero is-info welcome is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hello, {{ user?.username }}.
+            </h1>
+            <h2 class="subtitle">
+                I hope you are having a great day!
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="info-tiles">
+
+</section>
+<div class="columns">
+    <div class="column is-6">
+        <div class="card events-card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Subjects
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </header>
+            <div class="card-table">
+                <div class="content">
+                    <table class="table is-fullwidth is-striped">
+                        <tbody *ngIf="course">
+                            <tr *ngFor="let subject of course.subjects">
+                                <td>{{subject.name}}</td>
+                                <td class="level-right"><a class="button is-small is-primary" href="#">View Chapters</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">Click 'View Chapters' to open detail page</p>
+            </footer>
+        </div>
+    </div>
+    <div class="column is-6">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{ course?.name }}
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <p class="subtitle">{{ course?.description}}</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,16 +8,10 @@ import { User } from '../models/auth/auth';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  user: User;
   constructor(
-    private readonly userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getMyself().subscribe(
-      (data: User) => { this.user = data },
-      error => console.log(error)
-    )
   }
 
 }

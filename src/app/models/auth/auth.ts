@@ -11,7 +11,7 @@ export class User {
     blocked: boolean;
     class: Class;
     confirmed: boolean;
-    course: Course;
+    course: number;
     created_at: string;
     email: string;
     id: number;
