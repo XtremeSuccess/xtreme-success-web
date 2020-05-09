@@ -30,19 +30,17 @@
                 <div class="content">
                     <table class="table is-fullwidth is-striped">
                         <tbody *ngIf="course">
-                            <tr *ngFor="let subject of course.subjects">
+                            <tr *ngFor="let subject of course.subjects" (click)="getChapters(subject.id, subject.name)"
+                                [class.is-selected]="subject.name === selectedSubject">
                                 <td>{{subject.name}}</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        (click)="getChapters(subject.id, subject.name)">View Chapters</a>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <footer class="card-footer">
+            <!-- <footer class="card-footer">
                 <p class="card-footer-item">Click 'View Chapters' to open detail page</p>
-            </footer>
+            </footer> -->
         </div>
         <div class="card" *ngIf="chapters">
             <header class="card-header">
@@ -59,79 +57,31 @@
                 <div class="content">
                     <table class="table is-fullwidth is-striped">
                         <tbody>
-                            <tr *ngFor="let chapter of chapters">
+                            <tr *ngFor="let chapter of chapters" [class.is-selected]="chapter.name === selectedChapter"
+                                (click)="showChapterDetails(chapter.name, chapter.id)">
                                 <td>{{chapter.name}}</td>
-                                <td class="level-right"><a (click)="showChapterDetails(chapter.name)"
-                                        class="button is-small is-primary">View Chapter</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <footer class="card-footer">
+            <!-- <footer class="card-footer">
                 <p class="card-footer-item">Click 'View Chapters' to open detail page</p>
-            </footer>
+            </footer> -->
         </div>
     </div>
     <div class="column is-8">
-        <div class="card" *ngIf="selectedChapter">
-            <header class="card-header">
-                <p class="card-header-title">
-                    {{selectedChapter}} Contents
+        <div class="card" *ngIf="chapter">
+            <header class="card-header has-background-info">
+                <p class="card-header-title is-centered has-text-white">
+                    {{chapter.name}} Contents
                 </p>
             </header>
             <div class="card-content">
                 <div class="content">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
-                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!
-                    </p>
+                    <markdown katex>
+                        {{chapter.chapter_details.text}}
+                    </markdown>
                 </div>
             </div>
         </div>

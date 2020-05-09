@@ -29,9 +29,13 @@
             ],
             "styles": [
               "node_modules/bulma/css/bulma.min.css",
+              "node_modules/katex/dist/katex.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/katex/dist/katex.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,9 +98,13 @@
             ],
             "styles": [
               "node_modules/bulma/css/bulma.min.css",
+              "node_modules/katex/dist/katex.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/katex/dist/katex.min.js"
+            ]
           }
         },
         "lint": {

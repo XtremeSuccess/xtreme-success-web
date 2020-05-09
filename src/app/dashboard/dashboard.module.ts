@@ -1,3 +1,5 @@
+import { MarkdownModule } from 'ngx-markdown';
+import { MathJaxModule } from 'ngx-mathjax';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +13,8 @@ import { LandingComponent } from './landing/landing.component';
     CommonModule,
     DashboardRoutingModule,
     HttpClientModule,
+    MathJaxModule.forChild(),
+    MarkdownModule.forChild()
   ],
 })
 export class DashboardModule {

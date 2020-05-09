@@ -20,6 +20,7 @@ export class LandingComponent implements OnInit {
   chapters: Chapter[];
 
   selectedChapter: string;
+  chapter: Chapter;
 
   constructor(
     private readonly userService: UserService,
@@ -51,8 +52,11 @@ export class LandingComponent implements OnInit {
     })
   }
 
-  showChapterDetails(chapterName: string) {
+  showChapterDetails(chapterName: string, chapterId: number) {
     this.selectedChapter = chapterName;
+    this.subjectService.getSingleChapter(chapterId).subscribe((data: Chapter) => {
+      this.chapter = data;
+    });
   }
 
 }

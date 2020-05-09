@@ -15,4 +15,8 @@ export class SubjectsService {
   getSubjectDetail(id: number) {
     return this.http.get(`${this.url}/subjects/${id}`);
   }
+
+  getSingleChapter(id: number) {
+    return this.http.get(`${this.url}/chapters/${id}`);
+  }
 }
