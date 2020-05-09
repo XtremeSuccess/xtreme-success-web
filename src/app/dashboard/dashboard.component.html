@@ -37,6 +37,26 @@
     <div class="columns">
         <div class="column is-3 ">
             <aside class="menu is-hidden-mobile">
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-64x64">
+                                <img class="is-rounded" [src]="url+user.img.url" alt="Image" *ngIf="user.img">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>{{user.username}}</strong><br>
+                                    <span class="small-text"><b>{{user.email}}</b>, </span><span
+                                        class="small-text">{{user.role.name}}</span>
+                                    <br>
+                                    <span class="small-text"><b>Member Since : </b>{{user.created_at}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
                 <p class="menu-label">
                     General
                 </p>

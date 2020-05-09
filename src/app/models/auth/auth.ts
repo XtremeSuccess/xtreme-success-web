@@ -1,3 +1,4 @@
+import { Img } from './user/img';
 import { Class } from '../class/class';
 import { Course } from '../course/course';
 export class Role {
@@ -19,6 +20,7 @@ export class User {
     role: Role;
     updated_at: string;
     username: string;
+    img: Img;
 }
 
 export class Auth {

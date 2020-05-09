@@ -15,4 +15,8 @@ export class UserService {
   getMyself() {
     return this.http.get(`${this.url}/users/me`);
   }
+
+  getUser(id: number) {
+    return this.http.get(`${this.url}/users/${id}`);
+  }
 }

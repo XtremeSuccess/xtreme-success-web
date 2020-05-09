@@ -8,10 +8,21 @@ import { User } from '../models/auth/auth';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  user: User;
+  url: string;
   constructor(
-  ) { }
+    private readonly userService: UserService
+  ) {
+    this.url = this.userService.url;
+  }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.userService.getUser(this.user.id).subscribe((data: User) => {
+      this.user = data;
+      console.log(data);
+      this.user.created_at = new Date(data.created_at).toLocaleDateString();
+    });
   }
 
 }
