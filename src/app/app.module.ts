@@ -1,3 +1,4 @@
+import { domain } from './../server-config';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,8 +21,8 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
         tokenGetter: () => {
           return localStorage.getItem('access_token')
         },
-        whitelistedDomains: ["localhost:1337"],
-        blacklistedRoutes: ["localhost:1337/auth"]
+        whitelistedDomains: [domain],
+        blacklistedRoutes: [`${domain}/auth`]
       }
     }),
     MathJaxModule.forRoot({

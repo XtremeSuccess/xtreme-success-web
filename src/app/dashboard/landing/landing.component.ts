@@ -49,10 +49,11 @@ export class LandingComponent implements OnInit {
     this.selectedSubject = name;
     this.subjectService.getSubjectDetail(id).subscribe((data: Subject) => {
       this.chapters = data.chapters;
-    })
+    });
   }
 
   showChapterDetails(chapterName: string, chapterId: number) {
+    this.chapter = null;
     this.selectedChapter = chapterName;
     this.subjectService.getSingleChapter(chapterId).subscribe((data: Chapter) => {
       this.chapter = data;
