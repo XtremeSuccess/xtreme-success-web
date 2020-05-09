@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { url } from 'src/server-config';
 
 export class Data {
   data: any;
@@ -9,14 +10,13 @@ export class Data {
   providedIn: 'root'
 })
 export class SubjectsService {
-  url: string = 'http://localhost:1337'
   constructor(private http: HttpClient) { }
 
   getSubjectDetail(id: number) {
-    return this.http.get(`${this.url}/subjects/${id}`);
+    return this.http.get(`${url}/subjects/${id}`);
   }
 
   getSingleChapter(id: number) {
-    return this.http.get(`${this.url}/chapters/${id}`);
+    return this.http.get(`${url}/chapters/${id}`);
   }
 }

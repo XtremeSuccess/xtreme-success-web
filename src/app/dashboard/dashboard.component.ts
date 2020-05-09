@@ -1,6 +1,7 @@
 import { UserService } from './../services/data/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/auth/auth';
+import { url } from 'src/server-config';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private readonly userService: UserService
   ) {
-    this.url = this.userService.url;
+    this.url = url;
   }
 
   ngOnInit(): void {
