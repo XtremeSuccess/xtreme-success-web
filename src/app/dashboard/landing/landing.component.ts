@@ -1,4 +1,7 @@
-import { CoursesService } from './../../services/data/courses.service';
+import { Subject } from './../../models/subject/subject';
+import { Chapter } from './../../models/chapter/chapter';
+import { SubjectsService } from './../../services/data/subjects.service';
+import { CoursesService, Data } from './../../services/data/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/auth/auth';
 import { UserService } from 'src/app/services/data/user.service';
@@ -13,15 +16,20 @@ export class LandingComponent implements OnInit {
 
   user: User;
   course: Course;
+  selectedSubject: string;
+  chapters: Chapter[];
+
+  selectedChapter: string;
+
   constructor(
     private readonly userService: UserService,
-    private readonly courseService: CoursesService
+    private readonly courseService: CoursesService,
+    private readonly subjectService: SubjectsService
   ) { }
 
   ngOnInit(): void {
     this.userService.getMyself().subscribe(
       (data: User) => {
-        console.log(data)
         this.user = data
         this.getCourseDetails(data.course);
       },
@@ -33,9 +41,18 @@ export class LandingComponent implements OnInit {
   getCourseDetails(id: number) {
     this.courseService.getSingleCourse(id).subscribe((data: Course) => {
       this.course = data;
-      console.log(this.course);
     }, (error) => console.log(error));
   }
 
+  getChapters(id: number, name: string) {
+    this.selectedSubject = name;
+    this.subjectService.getSubjectDetail(id).subscribe((data: Subject) => {
+      this.chapters = data.chapters;
+    })
+  }
+
+  showChapterDetails(chapterName: string) {
+    this.selectedChapter = chapterName;
+  }
 
 }

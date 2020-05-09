@@ -14,7 +14,7 @@
 
 </section>
 <div class="columns">
-    <div class="column is-6">
+    <div class="column is-4">
         <div class="card">
             <header class="card-header">
                 <p class="card-header-title">
@@ -32,7 +32,8 @@
                         <tbody *ngIf="course">
                             <tr *ngFor="let subject of course.subjects">
                                 <td>{{subject.name}}</td>
-                                <td class="level-right"><a class="button is-small is-primary" href="#">View Chapters</a>
+                                <td class="level-right"><a class="button is-small is-primary"
+                                        (click)="getChapters(subject.id, subject.name)">View Chapters</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -43,20 +44,94 @@
                 <p class="card-footer-item">Click 'View Chapters' to open detail page</p>
             </footer>
         </div>
-    </div>
-    <div class="column is-6">
-        <div class="card">
+        <div class="card" *ngIf="chapters">
             <header class="card-header">
                 <p class="card-header-title">
-                    {{ course?.name }}
+                    {{selectedSubject}}
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </header>
+            <div class="card-table">
+                <div class="content">
+                    <table class="table is-fullwidth is-striped">
+                        <tbody>
+                            <tr *ngFor="let chapter of chapters">
+                                <td>{{chapter.name}}</td>
+                                <td class="level-right"><a (click)="showChapterDetails(chapter.name)"
+                                        class="button is-small is-primary">View Chapter</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">Click 'View Chapters' to open detail page</p>
+            </footer>
+        </div>
+    </div>
+    <div class="column is-8">
+        <div class="card" *ngIf="selectedChapter">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{selectedChapter}} Contents
                 </p>
             </header>
             <div class="card-content">
                 <div class="content">
-                    <p class="subtitle">{{ course?.description}}</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
                         mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
-                        magni nesciunt ipsam animi!</p>
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error eos, ducimus illum asperiores
+                        mollitia qui rerum alias sapiente ratione voluptate, odit animi quod dolores. Enim similique
+                        magni nesciunt ipsam animi!
+                    </p>
                 </div>
             </div>
         </div>

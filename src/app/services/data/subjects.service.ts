@@ -8,15 +8,11 @@ export class Data {
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesService {
+export class SubjectsService {
   url: string = 'http://localhost:1337'
   constructor(private http: HttpClient) { }
 
-  getAllCourses() {
-    return this.http.get(`${this.url}/courses`);
-  }
-
-  getSingleCourse(id: number) {
-    return this.http.get(`${this.url}/courses/${id}`);
+  getSubjectDetail(id: number) {
+    return this.http.get(`${this.url}/subjects/${id}`);
   }
 }
