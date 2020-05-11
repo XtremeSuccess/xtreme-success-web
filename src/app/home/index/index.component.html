@@ -7,22 +7,82 @@
         </div>
     </div>
 </section>
-
+<!-- Products Section -->
+<section id="products" class="section">
+    <div class="container is-fluid">
+        <div class="columns level">
+            <div class="column is-one-third level-item">
+                <img src="assets/img/abstract-payment-processed.png" alt="">
+            </div>
+            <div class="column has-text-justified level-item content">
+                <p class="title is-3 has-text-centered">Our Products</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni voluptatum commodi et blanditiis
+                iure explicabo impedit praesentium tempora dicta? Repellat explicabo voluptates vero, recusandae
+                enim non quisquam aut obcaecati reprehenderit in minima tenetur officia sed consequuntur, odio
+                quidem amet? Facilis id earum distinctio fuga beatae labore dolore assumenda doloremque repellat
+                corporis. Inventore tenetur suscipit, quisquam sapiente laudantium fugiat, eligendi quas beatae
+                minima nulla magnam nihil accusantium doloremque in repellat voluptatibus possimus! Corporis
+                nisi sequi libero hic et fugiat asperiores neque minus laborum iusto, perspiciatis eos saepe
+                fugit dicta autem numquam fuga accusantium! Delectus consequatur beatae nobis perferendis vitae
+                commodi quia.
+                <br><br>
+                <div class="has-text-centered">
+                    <button class="button is-primary is-outlined is-fullwidth">Know More About Our Products</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Courses Section -->
 <section class="section">
     <div class="container is-fluid has-text-centered">
         <div class="columns level">
-            <div class="column" *ngFor="let course of courses">
-                <div class="card is-shady">
-                    <div class="card-content">
-                        <div class="content">
-                            <h3 class="has-text-weight-bold">{{course.name}}</h3>
-                            <h2 class="has-text-weight-semibold"><b>Rs. {{course.price}}</b></h2>
-                            {{course.description}}
-                            <br /><br />
-                            <p class="subject-holder"><b>{{course | subjectString}}</b></p>
-                        </div>
-                    </div>
+            <div class="column has-text-justified level-item content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni voluptatum commodi et blanditiis
+                iure explicabo impedit praesentium tempora dicta? Repellat explicabo voluptates vero, recusandae
+                enim non quisquam aut obcaecati reprehenderit in minima tenetur officia sed consequuntur, odio
+                quidem amet? Facilis id earum distinctio fuga beatae labore dolore assumenda doloremque repellat
+                corporis. Inventore tenetur suscipit, quisquam sapiente laudantium fugiat, eligendi quas beatae
+                minima nulla magnam nihil accusantium doloremque in repellat voluptatibus possimus! Corporis
+                nisi sequi libero hic et fugiat asperiores neque minus laborum iusto, perspiciatis eos saepe
+                fugit dicta autem numquam fuga accusantium! Delectus consequatur beatae nobis perferendis vitae
+                commodi quia.
+                <br><br>
+                <div class="has-text-centered">
+                    <button class="button is-primary is-outlined is-fullwidth">Know More About Our Courses</button>
                 </div>
+            </div>
+            <div class="column level-item content">
+                <p class="title is-3 has-text-centered">Courses</p>
+                <table class="table is-fullwidth is-striped is-bordered scroll-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>Course Name</p>
+                            </th>
+                            <th>
+                                <p>Price (Rs.)</p>
+                            </th>
+                            <th>
+                                <p>Duration Year(s)</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of courses">
+                            <td>
+                                <p>{{course.name}}</p>
+                                <small class="has-text-grey is-size-7">{{course.description}}</small>
+                            </td>
+                            <td>
+                                <p><b>{{course.price}}</b></p>
+                            </td>
+                            <td>
+                                <p class="has-text-centered">{{course.duration}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
