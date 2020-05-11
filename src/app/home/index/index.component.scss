@@ -56,3 +56,11 @@ box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
   max-height: 350px;
   overflow-y: scroll;
 }
+
+.red-text {
+  display: inline-block;
+  // margin: 0 0.5rem;
+
+  animation: flash infinite; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 10s; /* don't forget to set a duration! */
+}
