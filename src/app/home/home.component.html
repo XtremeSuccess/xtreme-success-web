@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" routerLink="/">
-            <b>Xtreme Success</b>
+            <span class="has-text-danger"><b>Xtreme</b></span>&nbsp;Success
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -38,7 +38,7 @@
             </div>
             <div *ngIf="isAuthenticated" class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a class="button is-danger is-outlined">
                         <strong>Logout</strong>
                     </a>
                 </div>
