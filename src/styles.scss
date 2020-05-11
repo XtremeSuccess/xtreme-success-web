@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
+// custom sass
+$navbar-item-hover-background-color: hsl(348, 100%, 98%);
+$navbar-item-hover-color: hsl(348, 100%, 61%);
+$navbar-item-active-color: hsl(348, 100%, 61%);
+
+@import "~bulma/bulma.sass";
 body, button, input, select, textarea {
     font-family: Open Sans;
+}
+
+.red-text {
+    color: hsl(348, 100%, 61%);
 }
