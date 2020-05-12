@@ -1,3 +1,14 @@
+.home-title {
+  font-size: 3rem;
+}
+.bold-text {
+  font-weight: 700;
+}
+
+.light-text {
+  font-weight: 100;
+}
+
 .subject-holder {
     border: 1px solid hsl(0, 0%, 71%);
     border-radius: 8px;
@@ -48,4 +59,12 @@ box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
 .scroll-table {
   max-height: 350px;
   overflow-y: scroll;
+}
+
+.animated {
+  display: inline-block;
+  // margin: 0 0.5rem;
+
+  animation: flash infinite; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 10s; /* don't forget to set a duration! */
 }
