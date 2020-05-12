@@ -30,10 +30,10 @@
             <div class="navbar-end">
                 <div *ngIf="!isAuthenticated" class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-danger">
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-light">
+                        <a class="button is-danger is-outlined">
                             Log in
                         </a>
                     </div>
@@ -50,3 +50,11 @@
     </div>
 </nav>
 <router-outlet></router-outlet>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong><span class="red-text">Xtreme</span> Success</strong> |
+            All content is copyrighted. &copy; WebEdutech Private Limited, 2020.
+        </p>
+    </div>
+</footer>

@@ -30,5 +30,4 @@ export class IndexComponent implements OnInit {
       console.log(error);
     });
   }
-
 }

@@ -1,0 +1,9 @@
+.animation-left {
+    animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
+}
+
+.animation-right {
+    animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
+}
