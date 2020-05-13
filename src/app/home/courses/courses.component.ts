@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
+  selectedCourse: Course;
   constructor(
     private readonly courseService: CoursesService
   ) { }
@@ -22,6 +23,17 @@ export class CoursesComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  showCourse(id: number) {
+    this.courseService.getSingleCourse(id).subscribe(
+      (data: Course) => {
+        this.selectedCourse = data;
+      }, (error) => console.log(error)
+    );
+  }
+  closeCard() {
+    this.selectedCourse = null;
   }
 
 }

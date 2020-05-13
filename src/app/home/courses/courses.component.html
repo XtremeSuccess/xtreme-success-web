@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-5">
                 <table class="table is-fullwidth is-striped is-bordered scroll-table">
                     <thead>
                         <tr>
@@ -17,10 +17,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let course of courses">
+                        <tr *ngFor="let course of courses" [class.is-selected]="course.name === selectedCourse?.name"
+                            (click)="showCourse(course.id)">
                             <td>
                                 <p>{{course.name}}</p>
-                                <small class="has-text-grey is-size-7">{{course.description}}</small>
+                                <small class="is-size-7">{{course.description}}</small>
                             </td>
                             <td>
                                 <p><b>{{course.price}}</b></p>
@@ -31,6 +32,36 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="column" *ngIf="selectedCourse">
+                <div class="card animation-in">
+                    <header class="card-header">
+                        <p class="card-header-title">{{selectedCourse.name}}</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            {{selectedCourse.description}}
+                            <hr>
+                            <table class="table is-striped is-fullwidth is-bordered scroll-table">
+                                <thead>
+                                    <tr>
+                                        <th class="has-text-centered">Subjects Available</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let subject of selectedCourse.subjects">
+                                        <p class="has-text-centered">{{subject.name}}</p>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a class="button is-primary card-footer-item"><b>Subscribe for Rs. {{selectedCourse.price}} per
+                                year</b></a>
+                        <a (click)="closeCard()" class="button is-info card-footer-item"><b>Close</b></a>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>
