@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from './../services/data/user.service';
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private readonly userService: UserService,
     private readonly jwtHelper: JwtHelperService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {
     this.url = url;
   }
@@ -30,6 +32,11 @@ export class DashboardComponent implements OnInit {
       console.log(data);
       this.user.created_at = new Date(data.created_at).toLocaleDateString();
     });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/home/index']);
   }
 
 }

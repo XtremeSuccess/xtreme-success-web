@@ -1,8 +1,10 @@
+import { UserService } from 'src/app/services/data/user.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v1 as uuidv1 } from 'uuid';
+import { Auth } from 'src/app/models/auth/auth';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +22,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService,
+    private readonly userService: UserService,
     private readonly formBuilder: FormBuilder
   ) { }
 
@@ -48,8 +51,14 @@ export class RegisterComponent implements OnInit {
       password: this.form.controls['password'].value,
       username: uuidv1()
     };
-    console.log(formData);
-
+    this.authService.register(formData.username, formData.email, formData.password).subscribe(
+      (data: Auth) => {
+        localStorage.setItem('access_token', data.jwt);
+        this.userService.setUserDetails(formData).subscribe((data: any) => {
+          this.router.navigate(['/dashboard']);
+        }, err => console.log(err));
+      }, (error) => console.log(error)
+    );
   }
 
 }

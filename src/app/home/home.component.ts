@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,8 @@ export class HomeComponent implements OnInit {
   expandedMenu: boolean = false;
   isAuthenticated: boolean;
   constructor(
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,12 @@ export class HomeComponent implements OnInit {
     } else {
       this.expandedMenu = true;
     }
+  }
+
+  logout() {
+    localStorage.clear();
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.router.navigate(['/home/index']);
   }
 
 }
