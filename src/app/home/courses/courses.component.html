@@ -1,0 +1,37 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <table class="table is-fullwidth is-striped is-bordered scroll-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>Course Name</p>
+                            </th>
+                            <th>
+                                <p>Price (Rs.)</p>
+                            </th>
+                            <th>
+                                <p>Duration Year(s)</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of courses">
+                            <td>
+                                <p>{{course.name}}</p>
+                                <small class="has-text-grey is-size-7">{{course.description}}</small>
+                            </td>
+                            <td>
+                                <p><b>{{course.price}}</b></p>
+                            </td>
+                            <td>
+                                <p class="has-text-centered">{{course.duration}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
