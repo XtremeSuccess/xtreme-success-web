@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private jwtHelper: JwtHelperService
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.email, this.password).subscribe((auth: Auth) => {
-      localStorage.setItem('access_token', auth.jwt);
-      localStorage.setItem('user', JSON.stringify(auth.user));
-      this.router.navigate(['/dashboard']);
-    }, (error) => {
-      console.log(error)
-    });
+    this.authService.login(this.email, this.password)
+      .subscribe((auth: Auth) => {
+        localStorage.setItem('access_token', auth.jwt);
+        this.router.navigate(['/dashboard']);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
 }

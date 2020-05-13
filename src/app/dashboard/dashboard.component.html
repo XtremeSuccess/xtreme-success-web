@@ -41,17 +41,18 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-64x64">
-                                <img class="is-rounded" [src]="url+user.img.url" alt="Image" *ngIf="user.img">
+                                <img class="is-rounded" [src]="url+user.user_detail.img.url" alt="Image"
+                                    *ngIf="user.user_detail.img">
                             </figure>
                         </div>
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong>{{user.username}}</strong><br>
-                                    <span class="small-text"><b>{{user.email}}</b>, </span><span
-                                        class="small-text">{{user.role.name}}</span>
+                                    <strong>{{user?.user_detail.firstname}} {{user?.user_detail.lastname}}</strong><br>
+                                    <span class="small-text"><b>{{user?.email}}</b>, </span><span
+                                        class="small-text">{{user?.role.name}}</span>
                                     <br>
-                                    <span class="small-text"><b>Member Since : </b>{{user.created_at}}</span>
+                                    <span class="small-text"><b>Member Since : </b>{{user?.created_at}}</span>
                                 </p>
                             </div>
                         </div>
