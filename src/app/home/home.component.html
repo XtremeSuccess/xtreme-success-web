@@ -30,17 +30,17 @@
             <div class="navbar-end">
                 <div *ngIf="!isAuthenticated" class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-danger">
+                        <a routerLink="/auth/forms/register" class="button is-danger">
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-danger is-outlined">
+                        <a routerLink="/auth/forms/login" class="button is-danger is-outlined">
                             Log in
                         </a>
                     </div>
                 </div>
                 <div *ngIf="isAuthenticated" class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-danger is-outlined">
+                        <a (click)="logout()" class="button is-danger is-outlined">
                             <strong>Logout</strong>
                         </a>
                     </div>

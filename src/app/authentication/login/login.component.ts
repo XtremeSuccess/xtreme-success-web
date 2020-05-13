@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,24 +20,26 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private jwtHelper: JwtHelperService
   ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]]
-    })
+    });
+    console.log(this.form.controls['email']);
   }
 
   login() {
-    this.authService.login(this.email, this.password).subscribe((auth: Auth) => {
-      localStorage.setItem('access_token', auth.jwt);
-      localStorage.setItem('user', JSON.stringify(auth.user));
-      this.router.navigate(['/dashboard']);
-    }, (error) => {
-      console.log(error)
-    });
+    this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value)
+      .subscribe((auth: Auth) => {
+        localStorage.setItem('access_token', auth.jwt);
+        this.router.navigate(['/dashboard']);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
 }
