@@ -2,29 +2,104 @@
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
-                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                <div class="column is-5-tablet is-8-desktop is-8-widescreen">
                     <h2 class="title is-2">Register</h2>
                     <h3 class="subtitle is-3">for Xtreme Success</h3>
                     <form action="" class="box" [formGroup]="form">
-                        <div class="field">
-                            <label for="" class="label">Name</label>
-                            <div class="control">
-                                <input name="email" [(ngModel)]="username" type="text" placeholder="Bob Smith"
-                                    class="input" formControlName="username" required>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="" class="label">Name</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input type="text" placeholder="First Name" class="input"
+                                            formControlName="firstname" required>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input type="text" placeholder="Last Name" class="input"
+                                            formControlName="lastname" required>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="field">
-                            <label for="" class="label">Email</label>
-                            <div class="control">
-                                <input name="email" [(ngModel)]="email" type="email" placeholder="bobsmith@gmail.com"
-                                    class="input" formControlName="email" required>
+                        <div class="field is-horizontal">
+                            <div class="field-label"></div>
+                            <div class="field-body">
+                                <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                        <p class="control">
+                                            <a class="button is-static">
+                                                +91
+                                            </a>
+                                        </p>
+                                        <p class="control is-expanded">
+                                            <input class="input" type="tel" placeholder="Your phone number"
+                                                formControlName="mobile_number">
+                                        </p>
+                                    </div>
+                                    <p class="help">Do not enter the first zero</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="field">
-                            <label for="" class="label">Password</label>
-                            <div class="control">
-                                <input name="password" [(ngModel)]="password" type="password" placeholder="*******"
-                                    class="input" formControlName="password" required>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="" class="label">Parent's Name</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input name="parent_name" type="text" placeholder="Parent's Name" class="input"
+                                            formControlName="parent_name" required>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="" class="label">School Name</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input name="school_name" type="text" placeholder="School Name" class="input"
+                                            formControlName="school_name" required>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="" class="label">Login Details</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input name="email" type="email" placeholder="test@test.com" class="input"
+                                            formControlName="email" required>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input name="password" type="password" placeholder="******" class="input"
+                                            formControlName="password" required>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label for="" class="label">Address</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea name="address" placeholder="" class="textarea"
+                                            formControlName="address" required></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="field">

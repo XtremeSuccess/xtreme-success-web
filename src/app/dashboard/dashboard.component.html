@@ -42,7 +42,7 @@
                         <div class="media-left">
                             <figure class="image is-64x64">
                                 <img class="is-rounded" [src]="url+user.user_detail.img.url" alt="Image"
-                                    *ngIf="user.user_detail.img">
+                                    *ngIf="user?.user_detail.img">
                             </figure>
                         </div>
                         <div class="media-content">

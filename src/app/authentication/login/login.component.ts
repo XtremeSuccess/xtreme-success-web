@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]]
-    })
+    });
+    console.log(this.form.controls['email']);
   }
 
   login() {
-    this.authService.login(this.email, this.password)
+    this.authService.login(this.form.controls['email'].value, this.form.controls['password'].value)
       .subscribe((auth: Auth) => {
         localStorage.setItem('access_token', auth.jwt);
         this.router.navigate(['/dashboard']);
