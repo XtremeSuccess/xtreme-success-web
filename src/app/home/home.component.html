@@ -21,6 +21,9 @@
                 <a [routerLinkActive]="['is-active']" class="navbar-item" routerLink="/home/about">
                     About
                 </a>
+                <a [routerLinkActive]="['is-active']" class="navbar-item" routerLink="/home/courses">
+                    Courses
+                </a>
                 <a *ngIf="isAuthenticated" [routerLinkActive]="['is-active']" class="navbar-item"
                     routerLink="/dashboard">
                     Dashboard

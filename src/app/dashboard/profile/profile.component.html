@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Subscription & Course Details
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <h4 class="title is-4"><b>Subscription</b></h4>
+                        <hr>
+                        <p><b>Subscription Start Date : </b> {{subscription?.start_date}}</p>
+                        <p>
+                            <b>Subscription End Date : </b> {{subscription?.end_date}} <br>
+                            <small class="red-text">*{{ daysLeft }} days left of this subscription</small>
+                        </p>
+                        <hr>
+                        <h4 class="title is-4"><b>Course</b></h4>
+                        <hr>
+                        <p><b>Course Name : </b> {{course?.name}}</p>
+                        <p><b>Course Description : </b> {{course?.description}}</p>
+                        <p><b>Class : </b> {{course?.class.name}}</p>
+                        <p><b>Course Duration : </b> {{course?.duration}} Year(s)</p>
+                        <p><b>Course Subjects Available : </b></p>
+                        <ul>
+                            <li *ngFor="let subject of course?.subjects">{{subject.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Personal Details
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <p><b>Name : </b>{{user?.user_detail.firstname}} {{user?.user_detail.lastname}}</p>
+                        <p><b>Parent's Name : </b>{{user?.user_detail.parent_name}}</p>
+                        <p><b>Mobile Number : </b>{{user?.user_detail.mobile_number}}</p>
+                        <p><b>Parent's Mobile Number : </b>{{user?.user_detail.parent_mobile_number}}</p>
+                        <p><b>School Name : </b>{{user?.user_detail.school_name}}</p>
+                        <p><b>Address : </b>{{user?.user_detail.address}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

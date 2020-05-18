@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { LandingComponent } from './landing/landing.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [DashboardComponent, LandingComponent],
+  declarations: [DashboardComponent, LandingComponent, ProfileComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

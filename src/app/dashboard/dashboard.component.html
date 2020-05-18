@@ -19,6 +19,9 @@
                 <a class="navbar-item" routerLink="/home/about">
                     About
                 </a>
+                <a class="navbar-item" routerLink="/home/courses">
+                    Courses
+                </a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
@@ -62,8 +65,8 @@
                     General
                 </p>
                 <ul class="menu-list">
-                    <li><a class="is-active">Dashboard</a></li>
-                    <li><a>Profile</a></li>
+                    <li><a [routerLinkActive]="'is-active'" routerLink="/dashboard/main/landing">Dashboard</a></li>
+                    <li><a [routerLinkActive]="'is-active'" routerLink="/dashboard/main/profile">Profile</a></li>
                 </ul>
                 <p class="menu-label">
                     Study
@@ -71,13 +74,6 @@
                 <ul class="menu-list">
                     <li><a>Unit Tests</a></li>
                     <li><a>Mock Tests</a></li>
-                </ul>
-                <p class="menu-label">
-                    Account Settings
-                </p>
-                <ul class="menu-list">
-                    <li><a>Payments Details</a></li>
-                    <li><a>Subscription Details</a></li>
                 </ul>
             </aside>
         </div>
