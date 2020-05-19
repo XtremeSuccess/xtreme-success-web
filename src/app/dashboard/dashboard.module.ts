@@ -7,9 +7,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UnitTestComponent } from './unit-test/unit-test.component';
+import { MockTestComponent } from './mock-test/mock-test.component';
 
 @NgModule({
-  declarations: [DashboardComponent, LandingComponent, ProfileComponent],
+  declarations: [DashboardComponent, LandingComponent, ProfileComponent, UnitTestComponent, MockTestComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

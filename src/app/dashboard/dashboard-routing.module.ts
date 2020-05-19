@@ -1,3 +1,5 @@
+import { MockTestComponent } from './mock-test/mock-test.component';
+import { UnitTestComponent } from './unit-test/unit-test.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LandingComponent } from './landing/landing.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +18,14 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'unit',
+        component: UnitTestComponent
+      },
+      {
+        path: 'mock',
+        component: MockTestComponent
       }
     ]
   },
