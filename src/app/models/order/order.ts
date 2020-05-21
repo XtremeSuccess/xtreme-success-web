@@ -1,3 +1,4 @@
+import { Course } from 'src/app/models/course/course';
 import { User } from 'src/app/models/auth/auth';
 export class Order {
     id: number;
@@ -11,6 +12,7 @@ export class Order {
     amount_due: number;
     attempts: number;
     user: User;
+    course: Course;
     created_at: string;
     updated_at: string;
 }

@@ -25,6 +25,10 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchOrders();
+  }
+
+  fetchOrders() {
     this.orderService.getOrders(this.user.id).subscribe(
       (orders: Order[]) => {
         this.orders = orders;
@@ -42,33 +46,21 @@ export class OrdersComponent implements OnInit {
         "key": 'rzp_test_FFexwWi4LsHnuc',
         "amount": order.amount,
         "currency": order.currency,
-        "name": "Xtreme Success",
-        "description": "Test Transaction",
+        "name": "WebEdutech Private Limited",
+        "description": `${order.course.name} subscription`,
         "order_id": order.order_id,
-        "handler": function (response) {
-          alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature);
-        },
-        "prefill": {
-          "name": "Gaurav Kumar",
-          "email": "gaurav.kumar@example.com",
-          "contact": "9999999999"
-        },
-        "notes": {
-          "address": "Razorpay Corporate Office"
-        },
+        "handler": (res) => {
+          console.log(res);
+          this.orderService.verifyOrder(res).subscribe(
+            (data: Order) => {
+              console.log(data);
+              location.reload();
+            }, error => console.log(error)
+          );
+        }
       };
       var rzp1 = new Razorpay(options);
       rzp1.open();
     };
   }
-
-  dispayRazorpay() {
-    if (!this.selectedOrder) {
-      alert("No orders selected");
-    }
-
-  }
-
 }

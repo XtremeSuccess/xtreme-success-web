@@ -35,32 +35,19 @@
             </div>
             <div class="column" *ngIf="selectedCourse">
                 <div class="card animation-in">
-                    <header class="card-header">
-                        <p class="card-header-title">{{selectedCourse.name}}</p>
-                    </header>
                     <div class="card-content">
+                        <h2 class="title is-2 has-text-centered">{{selectedCourse.name}}</h2>
                         <div class="content">
-                            {{selectedCourse.description}}
-                            <hr>
-                            <table class="table is-striped is-fullwidth is-bordered scroll-table">
-                                <thead>
-                                    <tr>
-                                        <th class="has-text-centered">Subjects Available</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let subject of selectedCourse.subjects">
-                                        <p class="has-text-centered">{{subject.name}}</p>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <p class="has-text-centered">{{selectedCourse.description}}</p>
+                            <p class="title is-1 has-text-centered">₹ {{selectedCourse.price}}</p>
+                            <div class="buttons is-centered">
+                                <a (click)="createOrder(selectedCourse.price, selectedCourse.id)"
+                                    class="button is-primary is-outlined"><b>Subscribe</b></a>
+                                <a class="button is-info is-outlined">Show Subjects</a>
+                                <a (click)="closeCard()" class="button"><b>Close</b></a>
+                            </div>
                         </div>
                     </div>
-                    <footer class="card-footer">
-                        <a class="button is-primary card-footer-item"><b>Subscribe for Rs. {{selectedCourse.price}} per
-                                year</b></a>
-                        <a (click)="closeCard()" class="button is-info card-footer-item"><b>Close</b></a>
-                    </footer>
                 </div>
             </div>
         </div>

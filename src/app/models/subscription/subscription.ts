@@ -1,3 +1,4 @@
+import { Order } from './../order/order';
 import { Course } from '../course/course';
 
 export class Subscription {
@@ -5,6 +6,7 @@ export class Subscription {
     start_date: string;
     end_date: string;
     course: Course;
+    order: Order;
     created_at: string;
     updated_at: string;
 }

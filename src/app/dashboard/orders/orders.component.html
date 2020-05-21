@@ -6,8 +6,9 @@
                 <thead>
                     <tr>
                         <th>Order ID</th>
+                        <th>Course Name</th>
                         <th>Currency</th>
-                        <th>Amount</th>
+                        <th>Order Amount</th>
                         <th>Amount Paid</th>
                         <th>Amount Due</th>
                         <th>Status</th>
@@ -17,12 +18,25 @@
                 <tbody>
                     <tr *ngFor="let order of orders">
                         <td>{{order.id}}</td>
+                        <td>
+                            <p>{{order.course.name}}</p>
+                        </td>
                         <td>{{order.currency}}</td>
                         <td>{{order.amount / 100}}</td>
                         <td>{{order.amount_paid / 100}}</td>
                         <td>{{order.amount_due / 100}}</td>
-                        <td>{{order.status | uppercase}}</td>
-                        <td><a (click)="loadRazorpay(order)">Pay Now</a></td>
+                        <td>
+                            <p *ngIf="order.status !== 'paid'">
+                                <span class="tag is-danger">{{order.status | uppercase}}</span>
+                            </p>
+                            <p *ngIf="order.status === 'paid'">
+                                <span class="tag is-success">{{order.status | uppercase}}</span>
+                            </p>
+                        </td>
+                        <td>
+                            <a *ngIf="order.status !== 'paid'" (click)="loadRazorpay(order)">Pay Now</a>
+                            <p *ngIf="order.status === 'paid'"> <span class="tag is-light">Already Paid</span> </p>
+                        </td>
                     </tr>
                 </tbody>
             </table>

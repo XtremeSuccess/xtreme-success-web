@@ -14,4 +14,15 @@ export class OrderService {
   getOrders(user_id: number) {
     return this.http.get(`${url}/orders?user=${user_id}`);
   }
+
+  createOrder(amount: number, course: number) {
+    return this.http.post(`${url}/orders`, {
+      amount: amount,
+      course: course
+    });
+  }
+
+  verifyOrder(orderVerifyData: any) {
+    return this.http.post(`${url}/orders/verify`, orderVerifyData);
+  }
 }
