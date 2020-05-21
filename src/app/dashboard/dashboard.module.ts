@@ -9,9 +9,10 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UnitTestComponent } from './unit-test/unit-test.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
-  declarations: [DashboardComponent, LandingComponent, ProfileComponent, UnitTestComponent, MockTestComponent],
+  declarations: [DashboardComponent, LandingComponent, ProfileComponent, UnitTestComponent, MockTestComponent, OrdersComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

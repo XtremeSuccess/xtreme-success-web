@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="title is-1">Orders</h1>
+    <div class="columns">
+        <div class="column">
+            <table class="table is-fullwidth is-striped is-bordered scroll-table" *ngIf="orders">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Currency</th>
+                        <th>Amount</th>
+                        <th>Amount Paid</th>
+                        <th>Amount Due</th>
+                        <th>Status</th>
+                        <th>Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders">
+                        <td>{{order.id}}</td>
+                        <td>{{order.currency}}</td>
+                        <td>{{order.amount / 100}}</td>
+                        <td>{{order.amount_paid / 100}}</td>
+                        <td>{{order.amount_due / 100}}</td>
+                        <td>{{order.status | uppercase}}</td>
+                        <td><a (click)="loadRazorpay(order)">Pay Now</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

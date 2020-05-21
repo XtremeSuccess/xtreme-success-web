@@ -1,3 +1,4 @@
+import { OrdersComponent } from './orders/orders.component';
 import { MockTestComponent } from './mock-test/mock-test.component';
 import { UnitTestComponent } from './unit-test/unit-test.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'mock',
         component: MockTestComponent
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent
       }
     ]
   },
