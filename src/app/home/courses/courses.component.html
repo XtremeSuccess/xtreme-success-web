@@ -43,7 +43,7 @@
                         <h2 class="title is-2 has-text-centered">{{selectedCourse.name}}</h2>
                         <div class="content">
                             <p class="has-text-centered">{{selectedCourse.description}}</p>
-                            <p class="title is-1 has-text-centered">₹ {{selectedCourse.price}}</p>
+                            <p class="title is-1 has-text-centered">{{selectedCourse.price | currency:'INR'}}</p>
                             <div class="buttons is-centered">
                                 <a *ngIf="!isAlreadySubscribed"
                                     (click)="createOrder(selectedCourse.price, selectedCourse.id)"

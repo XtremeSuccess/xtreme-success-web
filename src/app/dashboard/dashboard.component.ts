@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
 
     this.userService.getUser(this.loggedInUser.id).subscribe((data: User) => {
       this.user = data;
-      this.user.created_at = new Date(data.created_at).toLocaleDateString();
     });
   }
 

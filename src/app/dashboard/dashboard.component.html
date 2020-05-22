@@ -55,7 +55,9 @@
                                     <span class="small-text"><b>{{user?.email}}</b>, </span><span
                                         class="small-text">{{user?.role.name}}</span>
                                     <br>
-                                    <span class="small-text"><b>Member Since : </b>{{user?.created_at}}</span>
+                                    <span class="small-text">
+                                        <b>Member Since :</b>{{user?.created_at | date:'dd/MM/yyyy'}}
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -88,11 +90,11 @@
         </div>
     </div>
 </div>
-<footer class="footer">
+<!-- <footer class="footer">
     <div class="content has-text-centered">
         <p>
             <strong><span class="red-text">Xtreme</span> Success</strong> |
             All content is copyrighted. &copy; WebEdutech Private Limited, 2020.
         </p>
     </div>
-</footer>
+</footer> -->

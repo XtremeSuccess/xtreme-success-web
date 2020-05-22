@@ -18,11 +18,9 @@ export class ProfileComponent implements OnInit {
   user: User;
   subscription: Subscription;
   course: Course;
-
+  
   today: Date = new Date();
   daysLeft: number = 0;
-
-  //TODO: Add edit profile page
 
   constructor(
     private readonly userService: UserService,

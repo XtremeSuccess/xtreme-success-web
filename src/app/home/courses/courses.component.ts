@@ -80,6 +80,7 @@ export class CoursesComponent implements OnInit {
   }
 
   createOrder(amount: number, course_id: number) {
+    // TODO: Implement a checkout page
     this.orderService.createOrder(amount, course_id).subscribe(
       (order: Order) => {
         console.log(order);
