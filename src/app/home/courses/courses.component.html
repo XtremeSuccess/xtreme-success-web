@@ -34,6 +34,10 @@
                 </table>
             </div>
             <div class="column" *ngIf="selectedCourse">
+                <div class="notification is-success" *ngIf="isAlreadySubscribed">
+                    You are already subscribed to a course. Create a new account for another subscription or go to the
+                    <a>Dashboard</a>
+                </div>
                 <div class="card animation-in">
                     <div class="card-content">
                         <h2 class="title is-2 has-text-centered">{{selectedCourse.name}}</h2>
@@ -41,7 +45,8 @@
                             <p class="has-text-centered">{{selectedCourse.description}}</p>
                             <p class="title is-1 has-text-centered">₹ {{selectedCourse.price}}</p>
                             <div class="buttons is-centered">
-                                <a (click)="createOrder(selectedCourse.price, selectedCourse.id)"
+                                <a *ngIf="!isAlreadySubscribed"
+                                    (click)="createOrder(selectedCourse.price, selectedCourse.id)"
                                     class="button is-primary is-outlined"><b>Subscribe</b></a>
                                 <a class="button is-info is-outlined">Show Subjects</a>
                                 <a (click)="closeCard()" class="button"><b>Close</b></a>

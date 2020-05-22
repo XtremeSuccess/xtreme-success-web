@@ -24,6 +24,7 @@ export class CoursesComponent implements OnInit {
   localUser: any;
   courses: Course[];
   selectedCourse: Course;
+  isAlreadySubscribed: boolean = false;
   constructor(
     private readonly authService: AuthService,
     private readonly courseService: CoursesService,
@@ -41,6 +42,9 @@ export class CoursesComponent implements OnInit {
       this.userService.getUser(this.localUser.id).subscribe(
         (u: User) => {
           this.user = u;
+          if (u.user_detail.subscription) {
+            this.isAlreadySubscribed = true;
+          }
           this.courseService.getAllCourses().subscribe(
             (data: Course[]) => {
               this.courses = data;
