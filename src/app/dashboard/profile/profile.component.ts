@@ -39,9 +39,8 @@ export class ProfileComponent implements OnInit {
         this.user = data;
         this.subsService.getSubscription(this.user.user_detail.subscription).subscribe(
           (subs: Subscription) => {
+            console.log(subs);
             this.subscription = subs;
-            this.subscription.start_date = (new Date(subs.start_date)).toLocaleDateString();
-            this.subscription.end_date = (new Date(subs.end_date)).toLocaleDateString();
             this.daysLeft = Math.ceil(((new Date(subs.end_date).getTime()) - this.today.getTime()) / (1000 * 60 * 60 * 24));
             this.courseService.getSingleCourse(subs.course.id).subscribe(
               (c: Course) => {

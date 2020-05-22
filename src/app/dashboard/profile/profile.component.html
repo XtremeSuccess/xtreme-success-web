@@ -9,9 +9,11 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p><b>Subscription Start Date : </b> {{subscription?.start_date}}</p>
+                        <p><b>Order Id : </b>{{subscription?.order.order_id}}</p>
+                        <p><b>Order Amount : </b>{{subscription?.order.amount / 100 | currency:'INR'}}</p>
+                        <p><b>Subscription Start Date : </b> {{subscription?.start_date | date:'dd/MM/yyyy'}}</p>
                         <p>
-                            <b>Subscription End Date : </b> {{subscription?.end_date}} <br>
+                            <b>Subscription End Date : </b> {{subscription?.end_date | date:'dd/MM/yyyy'}} <br>
                             <small class="red-text">*{{ daysLeft }} days left of this subscription</small>
                         </p>
                     </div>

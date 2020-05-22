@@ -1,3 +1,5 @@
+import { User } from './../../models/auth/auth';
+import { UserService } from './../../services/data/user.service';
 import { Order } from './../../models/order/order';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { OrderService } from './../../services/data/order.service';
@@ -15,10 +17,12 @@ export class OrdersComponent implements OnInit {
   user: any;
   orders: Order[];
   selectedOrder: Order;
+  hasActiveSubs: boolean = false;
 
   constructor(
     private readonly authService: AuthService,
     private readonly orderService: OrderService,
+    private readonly userService: UserService,
     private readonly jwtHelper: JwtHelperService
   ) {
     this.user = jwtHelper.decodeToken(authService.getToken());
@@ -29,10 +33,17 @@ export class OrdersComponent implements OnInit {
   }
 
   fetchOrders() {
-    this.orderService.getOrders(this.user.id).subscribe(
-      (orders: Order[]) => {
-        this.orders = orders;
-      }, error => console.log(error)
+    this.userService.getUser(this.user.id).subscribe(
+      (data: User) => {
+        if (data.user_detail.subscription) {
+          this.hasActiveSubs = true;
+        }
+        this.orderService.getOrders(this.user.id).subscribe(
+          (orders: Order[]) => {
+            this.orders = orders;
+          }, error => console.log(error)
+        );
+      }
     );
   }
 

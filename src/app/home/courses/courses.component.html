@@ -2,7 +2,7 @@
     <div class="container">
         <div class="columns">
             <div class="column is-5">
-                <table class="table is-fullwidth is-striped is-bordered scroll-table">
+                <table class="table is-fullwidth is-striped is-hoverable is-bordered scroll-table">
                     <thead>
                         <tr>
                             <th>
@@ -36,7 +36,7 @@
             <div class="column" *ngIf="selectedCourse">
                 <div class="notification is-success" *ngIf="isAlreadySubscribed">
                     You are already subscribed to a course. Create a new account for another subscription or go to the
-                    <a>Dashboard</a>
+                    <a routerLink="/dashboard">Dashboard</a>
                 </div>
                 <div class="card animation-in">
                     <div class="card-content">

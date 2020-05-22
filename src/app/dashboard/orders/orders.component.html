@@ -1,40 +1,52 @@
+<section class="hero is-primary orders-heading">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title has-text-centered">
+                Orders
+            </h1>
+        </div>
+    </div>
+</section>
+
 <div class="container">
-    <h1 class="title is-1">Orders</h1>
     <div class="columns">
-        <div class="column">
-            <table class="table is-fullwidth is-striped is-bordered scroll-table" *ngIf="orders">
+        <div class="column table-container">
+            <table class="table is-fullwidth is-striped scroll-table" *ngIf="orders">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Course Name</th>
-                        <th>Currency</th>
-                        <th>Order Amount</th>
-                        <th>Amount Paid</th>
-                        <th>Amount Due</th>
-                        <th>Status</th>
-                        <th>Pay</th>
+                        <th class="has-text-centered">Order ID</th>
+                        <th class="has-text-centered">Course Name</th>
+                        <th class="has-text-centered">Currency</th>
+                        <th class="has-text-centered">Order Amount</th>
+                        <th class="has-text-centered">Status</th>
+                        <th class="has-text-centered">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let order of orders">
-                        <td>{{order.id}}</td>
-                        <td>
-                            <p>{{order.course.name}}</p>
+                        <td class="has-text-centered">{{order.id}}</td>
+                        <td class="has-text-centered">
+                            <p class="has-text-centered">{{order.course.name}}</p>
                         </td>
-                        <td>{{order.currency}}</td>
-                        <td>{{order.amount / 100}}</td>
-                        <td>{{order.amount_paid / 100}}</td>
-                        <td>{{order.amount_due / 100}}</td>
-                        <td>
+                        <td class="has-text-cenered">
+                            <p class="has-text-centered">
+                                {{order.currency}}
+                            </p>
+                        </td>
+                        <td class="has-text-centered">{{order.amount / 100 | currency:'INR' }}</td>
+                        <td class="has-text-centered">
                             <p *ngIf="order.status !== 'paid'">
-                                <span class="tag is-danger">{{order.status | uppercase}}</span>
+                                <span class="tag is-danger">DUE</span>
                             </p>
                             <p *ngIf="order.status === 'paid'">
                                 <span class="tag is-success">{{order.status | uppercase}}</span>
                             </p>
                         </td>
-                        <td>
-                            <a *ngIf="order.status !== 'paid'" (click)="loadRazorpay(order)">Pay Now</a>
+                        <td class="has-text-centered">
+                            <a *ngIf="order.status !== 'paid' && !hasActiveSubs" (click)="loadRazorpay(order)">
+                                <span class="tag is-warning"><b>Pay Now</b></span>
+                            </a>
+                            <p *ngIf="hasActiveSubs"> <span class="tag is-info">SUB EXISTS</span> </p>
                             <p *ngIf="order.status === 'paid'"> <span class="tag is-light">Already Paid</span> </p>
                         </td>
                     </tr>
