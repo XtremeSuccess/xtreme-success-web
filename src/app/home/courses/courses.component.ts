@@ -105,12 +105,10 @@ export class CoursesComponent implements OnInit {
         "name": "WebEdutech Private Limited",
         "description": `${order.course.name} subscription`,
         "order_id": order.order_id,
-        "handler": (res) => {
-          console.log(res);
+        "handler": (res: any) => {
           this.orderService.verifyOrder(res).subscribe(
             (data: Order) => {
               let date: Date = new Date();
-              console.log(data);
               this.subscriptionService.createSubscription({
                 start_date: date.toISOString(),
                 end_date: new Date(date.setFullYear(date.getFullYear() + data.course.duration)).toISOString(),
@@ -120,7 +118,6 @@ export class CoursesComponent implements OnInit {
                 (sub: Subscription) => {
                   this.userService.updateUserDetails(this.user.user_detail.id, { subscription: sub.id }).subscribe(
                     (userDetails: UserDetail) => {
-                      console.log(userDetails)
                       //TODO: check if this is working
                       this.router.navigate(['/dashboard']);
                     },

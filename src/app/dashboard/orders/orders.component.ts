@@ -1,4 +1,7 @@
-import { User } from './../../models/auth/auth';
+import { Router } from '@angular/router';
+import { Subscription } from './../../models/subscription/subscription';
+import { SubscriptionService } from './../../services/subscription/subscription-service.service';
+import { User, UserDetail } from './../../models/auth/auth';
 import { UserService } from './../../services/data/user.service';
 import { Order } from './../../models/order/order';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -23,7 +26,9 @@ export class OrdersComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly orderService: OrderService,
     private readonly userService: UserService,
-    private readonly jwtHelper: JwtHelperService
+    private readonly jwtHelper: JwtHelperService,
+    private readonly router: Router,
+    private readonly subscriptionService: SubscriptionService
   ) {
     this.user = jwtHelper.decodeToken(authService.getToken());
   }
@@ -60,12 +65,26 @@ export class OrdersComponent implements OnInit {
         "name": "WebEdutech Private Limited",
         "description": `${order.course.name} subscription`,
         "order_id": order.order_id,
-        "handler": (res) => {
-          console.log(res);
+        "handler": (res: any) => {
           this.orderService.verifyOrder(res).subscribe(
             (data: Order) => {
-              console.log(data);
-              location.reload();
+              let date: Date = new Date();
+              this.subscriptionService.createSubscription({
+                start_date: date.toISOString(),
+                end_date: new Date(date.setFullYear(date.getFullYear() + data.course.duration)).toISOString(),
+                course: data.course.id,
+                order: data.id
+              }).subscribe(
+                (sub: Subscription) => {
+                  this.userService.updateUserDetails(this.user.user_detail.id, { subscription: sub.id }).subscribe(
+                    (userDetails: UserDetail) => {
+                      //TODO: check if this is working
+                      this.router.navigate(['/dashboard']);
+                    },
+                    (error) => console.log(error)
+                  );
+                }
+              );
             }, error => console.log(error)
           );
         }
