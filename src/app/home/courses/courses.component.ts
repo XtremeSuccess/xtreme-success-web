@@ -1,9 +1,15 @@
+import { UserDetail } from './../../models/auth/auth';
+import { UserService } from 'src/app/services/data/user.service';
+import { Subscription } from './../../models/subscription/subscription';
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth/auth.service';
 import { SubscriptionService } from './../../services/subscription/subscription-service.service';
 import { Order } from './../../models/order/order';
 import { OrderService } from './../../services/data/order.service';
 import { Course } from './../../models/course/course';
 import { CoursesService } from './../../services/data/courses.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/auth/auth';
 
 declare var Razorpay: any;
 
@@ -13,23 +19,48 @@ declare var Razorpay: any;
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+  isLoggedIn: boolean;
+  user: User;
+  localUser: any;
   courses: Course[];
   selectedCourse: Course;
   constructor(
+    private readonly authService: AuthService,
     private readonly courseService: CoursesService,
     private readonly orderService: OrderService,
+    private readonly router: Router,
+    private readonly userService: UserService,
     private readonly subscriptionService: SubscriptionService
-  ) { }
+  ) {
+    this.isLoggedIn = this.authService.isAuthenticated();
+    this.localUser = this.authService.getUser()
+  }
 
   ngOnInit(): void {
-    this.courseService.getAllCourses().subscribe(
-      (data: Course[]) => {
-        this.courses = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.localUser) {
+      this.userService.getUser(this.localUser.id).subscribe(
+        (u: User) => {
+          this.user = u;
+          this.courseService.getAllCourses().subscribe(
+            (data: Course[]) => {
+              this.courses = data;
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        }
+      );
+    } else {
+      this.courseService.getAllCourses().subscribe(
+        (data: Course[]) => {
+          this.courses = data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   showCourse(id: number) {
@@ -47,12 +78,18 @@ export class CoursesComponent implements OnInit {
   createOrder(amount: number, course_id: number) {
     this.orderService.createOrder(amount, course_id).subscribe(
       (order: Order) => {
+        console.log(order);
         this.loadRazorpay(order);
       }
     )
   }
 
   loadRazorpay(order: Order) {
+    console.log(order);
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/auth/forms/login']);
+      return;
+    }
     const script = document.createElement('script');
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
     document.body.appendChild(script);
@@ -68,8 +105,25 @@ export class CoursesComponent implements OnInit {
           console.log(res);
           this.orderService.verifyOrder(res).subscribe(
             (data: Order) => {
+              let date: Date = new Date();
               console.log(data);
-              location.reload();
+              this.subscriptionService.createSubscription({
+                start_date: date.toISOString(),
+                end_date: new Date(date.setFullYear(date.getFullYear() + data.course.duration)).toISOString(),
+                course: data.course.id,
+                order: data.id
+              }).subscribe(
+                (sub: Subscription) => {
+                  this.userService.updateUserDetails(this.user.user_detail.id, { subscription: sub.id }).subscribe(
+                    (userDetails: UserDetail) => {
+                      console.log(userDetails)
+                      //TODO: check if this is working
+                      this.router.navigate(['/dashboard']);
+                    },
+                    (error) => console.log(error)
+                  );
+                }
+              );
             }, error => console.log(error)
           );
         }

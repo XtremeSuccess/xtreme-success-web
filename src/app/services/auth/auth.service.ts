@@ -35,4 +35,12 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('access_token');
   }
+
+  getUser() {
+    if (this.isAuthenticated()) {
+      return this.jwtHelper.decodeToken(this.getToken());
+    } else {
+      return null;
+    }
+  }
 }
