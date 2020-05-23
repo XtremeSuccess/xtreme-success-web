@@ -1,3 +1,5 @@
+import { AuthGuardService } from './../services/auth/auth-guard.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './about/about.component';
@@ -21,6 +23,11 @@ const routes: Routes = [
       {
         path: 'courses',
         component: CoursesComponent
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [AuthGuardService]
       }
     ]
   },

@@ -25,6 +25,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "animate.css": "^4.1.0",
     "bulma": "^0.8.2",
+    "bulma-block-list": "^0.3.0",
     "ngx-markdown": "^9.0.0",
     "ngx-mathjax": "0.0.11",
     "rxjs": "~6.5.4",

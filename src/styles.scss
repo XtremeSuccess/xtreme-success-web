@@ -8,8 +8,11 @@ $navbar-item-hover-background-color: hsl(348, 100%, 98%);
 $navbar-item-hover-color: hsl(348, 100%, 61%);
 $navbar-item-active-color: hsl(348, 100%, 61%);
 
+$footer-padding: 1.5rem 1.5rem 3rem;
+
 @import "~bulma/bulma.sass";
 @import "~animate.css/animate.min.css";
+@import "node_modules/bulma-block-list/src/block-list";
 
 // custom css
 body, button, input, select, textarea {
