@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MathJaxModule } from 'ngx-mathjax';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
       config: 'TeX-AMS_HTML',
       hostname: 'cdnjs.cloudflare.com'
     }),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

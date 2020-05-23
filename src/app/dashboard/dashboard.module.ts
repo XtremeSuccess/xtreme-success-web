@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MarkdownModule } from 'ngx-markdown';
 import { MathJaxModule } from 'ngx-mathjax';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +19,8 @@ import { OrdersComponent } from './orders/orders.component';
     DashboardRoutingModule,
     HttpClientModule,
     MathJaxModule.forChild(),
-    MarkdownModule.forChild()
+    MarkdownModule.forChild(),
+    FontAwesomeModule
   ],
 })
 export class DashboardModule {

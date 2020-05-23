@@ -7,6 +7,7 @@ import { UserService } from './../../services/data/user.service';
 import { Subscription } from './../../models/subscription/subscription';
 import { User } from './../../models/auth/auth';
 import { Component, OnInit } from '@angular/core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-profile',
@@ -18,9 +19,12 @@ export class ProfileComponent implements OnInit {
   user: User;
   subscription: Subscription;
   course: Course;
-  
+
   today: Date = new Date();
   daysLeft: number = 0;
+
+  // Icons
+  faEdit = faEdit;
 
   constructor(
     private readonly userService: UserService,
