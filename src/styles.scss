@@ -15,10 +15,14 @@ $footer-padding: 1.5rem 1.5rem 3rem;
 @import "node_modules/bulma-block-list/src/block-list";
 
 // custom css
-body, button, input, select, textarea {
-    font-family: Open Sans;
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .red-text {
-    color: hsl(348, 100%, 61%);
+  color: hsl(348, 100%, 61%);
 }
