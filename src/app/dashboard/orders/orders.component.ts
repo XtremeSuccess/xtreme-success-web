@@ -40,7 +40,7 @@ export class OrdersComponent implements OnInit {
         if (data.user_detail.subscription) {
           this.hasActiveSubs = true;
         }
-        this.orderService.getOrders(this.user.id).subscribe(
+        this.orderService.getOrdersWithParams({ user: this.user.id }).subscribe(
           (orders: Order[]) => {
             this.orders = orders;
           }, error => console.log(error)

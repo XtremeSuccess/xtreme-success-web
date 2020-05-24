@@ -11,10 +11,6 @@ export class OrderService {
     private readonly http: HttpClient
   ) { }
 
-  getOrders(user_id: number) {
-    return this.http.get(`${url}/orders?user=${user_id}`);
-  }
-
   getOrdersWithParams(data: any) {
     return this.http.get(`${url}/orders`, { params: data });
   }

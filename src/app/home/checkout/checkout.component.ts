@@ -1,3 +1,4 @@
+import { key } from './credentials';
 import { UserDetail } from './../../models/auth/auth';
 import { Subscription } from 'src/app/models/subscription/subscription';
 import { Order } from './../../models/order/order';
@@ -89,7 +90,7 @@ export class CheckoutComponent implements OnInit {
     document.body.appendChild(script);
     script.onload = () => {
       var options = {
-        "key": 'rzp_test_FFexwWi4LsHnuc',
+        "key": key,
         "amount": order.amount,
         "currency": order.currency,
         "name": "WebEdutech Private Limited",
