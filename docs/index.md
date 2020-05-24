@@ -1,9 +1,10 @@
 # Xtreme Success (Web)
-![Web Logo](Web.png)
+![Web Logo](https://imgur.com/LVOwc85)
 
 This codebase serves as the front end (web) version for the Xtreme Success Project.
 
 **Tools and Frameworks Used for this particular repo:**
+
 | Tool               | Purpose                                         |
 |--------------------|-------------------------------------------------|
 | NodeJS NPM         | General purpose scripting and package managing. |
