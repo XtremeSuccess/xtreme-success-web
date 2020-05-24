@@ -1,3 +1,5 @@
 title: Xtreme Success (FrontEnd)
 description: Xtreme Success is a learning management platform curated for the usage of/by WebEdutech Pvt. Ltd. It can be customized to suit the needs of other users easily.
 theme: jekyll-theme-cayman
+github:
+  is_project_page: false
