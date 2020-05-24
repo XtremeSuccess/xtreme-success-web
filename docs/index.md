@@ -1,6 +1,6 @@
 # Xtreme Success (Web)
 
-![Web Logo](https://imgur.com/LVOwc85)
+[Imgur](https://i.imgur.com/LVOwc85.png)
 
 This codebase serves as the front end (web) version for the Xtreme Success Project.
 
