@@ -45,7 +45,7 @@
                             <p class="has-text-centered">{{selectedCourse.description}}</p>
                             <p class="title is-1 has-text-centered">{{selectedCourse.price | currency:'INR'}}</p>
                             <div class="buttons is-centered">
-                                <a *ngIf="isAlreadySubscribed" (click)="openCheckoutPage(selectedCourse.id)"
+                                <a *ngIf="!isAlreadySubscribed" (click)="openCheckoutPage(selectedCourse.id)"
                                     class="button is-primary is-outlined"><b>Subscribe</b></a>
                                 <a class="button is-info is-outlined">Show Subjects</a>
                                 <a (click)="closeCard()" class="button"><b>Close</b></a>

@@ -109,8 +109,7 @@ export class CheckoutComponent implements OnInit {
                 (sub: Subscription) => {
                   this.userService.updateUserDetails(this.user.user_detail.id, { subscription: sub.id }).subscribe(
                     (userDetails: UserDetail) => {
-                      //TODO: check if this is working
-                      this.router.navigate(['/dashboard']);
+                      location.replace(location.origin + '/dashboard');
                     },
                     (error) => console.log(error)
                   );
