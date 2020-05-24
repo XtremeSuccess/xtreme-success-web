@@ -1,5 +1,3 @@
-# Xtreme Success (Web)
-
 ![Imgur](https://i.imgur.com/LVOwc85.png)
 
 This codebase serves as the front end (web) version for the Xtreme Success Project.
