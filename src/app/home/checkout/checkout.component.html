@@ -46,9 +46,9 @@
                 </p>
                 <hr>
                 <br>
-                <button (click)="createOrder(course?.price, course?.id)"
+                <button [disabled]="isAlreadyPaid" (click)="createOrder(course?.price, course?.id)"
                     class="button is-fullwidth is-info is-outlined is-rounded has-text-weight-bold">
-                    Checkout
+                    {{isAlreadyPaid ? 'Already Paid' : 'Checkout'}}
                 </button>
             </div>
         </div>

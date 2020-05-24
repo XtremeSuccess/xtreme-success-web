@@ -21,6 +21,8 @@ declare var Razorpay: any;
 export class CheckoutComponent implements OnInit {
 
   courseIdParam: number;
+  orderIdParam: number;
+  isAlreadyPaid: boolean;
   course: Course;
   localUser: any;
   user: User;
@@ -44,6 +46,11 @@ export class CheckoutComponent implements OnInit {
         this.route.queryParams.subscribe(
           (params: any) => {
             this.courseIdParam = params['id'];
+            this.orderIdParam = params['order'];
+            if (!this.courseIdParam && !this.orderIdParam) {
+              this.router.navigate(['/home/courses']);
+              return;
+            }
             this.courseService.getSingleCourse(this.courseIdParam).subscribe(
               (course: Course) => {
                 this.course = course;
@@ -56,12 +63,23 @@ export class CheckoutComponent implements OnInit {
   }
 
   createOrder(amount: number, course_id: number) {
-    this.orderService.createOrder(amount, course_id).subscribe(
-      (order: Order) => {
-        console.log(order);
-        this.loadRazorpay(order);
-      }
-    )
+    if (this.orderIdParam) {
+      this.orderService.getSingleOrder(this.orderIdParam).subscribe(
+        (order: Order) => {
+          if (order.status === 'paid') {
+            this.isAlreadyPaid = true;
+          } else {
+            this.loadRazorpay(order);
+          }
+        }, error => console.log(error)
+      );
+    } else {
+      this.orderService.createOrder(amount, course_id).subscribe(
+        (order: Order) => {
+          this.loadRazorpay(order);
+        }, error => console.log(error)
+      );
+    }
   }
 
   loadRazorpay(order: Order) {
