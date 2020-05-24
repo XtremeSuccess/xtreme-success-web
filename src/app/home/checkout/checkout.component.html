@@ -1,24 +1,19 @@
 <div class="container checkout-container">
     <div class="columns">
-        <div class="column is-8">
+        <div class="column is-8 is-hidden-mobile">
             <div class="box">
-                <h3 class="title is-3 has-text-weight-bold">Combo Class 10 WB</h3>
+                <h3 class="title is-3 has-text-weight-bold">{{course?.name}}</h3>
+                <h5 class="subtile is-5 has-text-weight-semibold">For {{course?.class.name}}</h5>
+                <br>
                 <p class="has-text-justified has-text-weight-light">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias facere labore dignissimos repudiandae
-                    corrupti, aut ut, id cumque esse, vel minus molestias! Delectus totam tempore, facilis aliquam
-                    exercitationem atque velit.
+                    {{course?.description}}
                 </p>
                 <hr>
-                <br>
                 <h4 class="title is-4 has-text-weight-semibold">Subjects</h4>
                 <ul class="block-list is-small">
-                    <li class="is-outlined is-dark">Bengali</li>
-                    <li class="is-outlined is-dark">English</li>
-                    <li class="is-outlined is-dark">Mathematics</li>
-                    <li class="is-outlined is-dark">Physical Science</li>
-                    <li class="is-outlined is-dark">Life Science</li>
-                    <li class="is-outlined is-dark">History</li>
-                    <li class="is-outlined is-dark">Geography</li>
+                    <li class="is-outlined is-dark" *ngFor="let subject of course?.subjects">
+                        {{subject.name}}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -33,26 +28,27 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>Combo Class 10 WB</td>
+                        <td>{{course?.name}}</td>
                         <td>
-                            <p class="has-text-right"><strong>{{500 | currency:'INR'}}</strong></p>
+                            <p class="has-text-right"><strong>{{course?.price | currency:'INR'}}</strong></p>
                         </td>
                     </tr>
                 </table>
                 <hr>
-                <p><b>Subscription for 1 Year</b></p>
+                <p><b>Subscription for {{course?.duration}} Year</b></p>
                 <br>
-                <p><b>Customer Name : </b> Aurghyadip Kundu</p>
-                <p><b>Mobile Number : </b> 7044475070</p>
+                <p><b>Customer Name : </b> {{user?.user_detail.firstname}} {{user?.user_detail.lastname}}</p>
+                <p><b>E-mail : </b> {{user?.email}}</p>
+                <p><b>Mobile Number : </b> {{user?.user_detail.mobile_number}}</p>
                 <p><b>Billing Address : </b></p>
                 <p>
-                    Flat -6, P-38, Nivedita Park, Kolkata - 700096,
-                    West Bengal
+                    {{user?.user_detail.address}}
                 </p>
                 <hr>
                 <br>
-                <button class="button is-fullwidth is-info is-outlined is-rounded has-text-weight-bold">
-                    Checkout
+                <button [disabled]="isAlreadyPaid" (click)="createOrder(course?.price, course?.id)"
+                    class="button is-fullwidth is-info is-outlined is-rounded has-text-weight-bold">
+                    {{isAlreadyPaid ? 'Already Paid' : 'Checkout'}}
                 </button>
             </div>
         </div>

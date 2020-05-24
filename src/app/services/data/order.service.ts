@@ -19,6 +19,10 @@ export class OrderService {
     return this.http.get(`${url}/orders`, { params: data });
   }
 
+  getSingleOrder(id: number) {
+    return this.http.get(`${url}/orders/${id}`);
+  }
+
   createOrder(amount: number, course: number) {
     return this.http.post(`${url}/orders`, {
       amount: amount,

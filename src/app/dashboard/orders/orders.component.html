@@ -43,7 +43,8 @@
                             </p>
                         </td>
                         <td class="has-text-centered">
-                            <a *ngIf="order.status !== 'paid' && !hasActiveSubs" (click)="loadRazorpay(order)">
+                            <a *ngIf="order.status !== 'paid' && !hasActiveSubs"
+                                (click)="goToCheckout(order.course.id, order.id)">
                                 <span class="tag is-warning"><b>Pay Now</b></span>
                             </a>
                             <p *ngIf="hasActiveSubs"> <span class="tag is-info">SUB EXISTS</span> </p>
