@@ -1,5 +1,7 @@
 # Xtreme Success (Web)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3e577bbafadf4ee3812422f0c538368c)](https://www.codacy.com/gh/XtremeSuccess/xtreme-success-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XtremeSuccess/xtreme-success-web&amp;utm_campaign=Badge_Grade)
+
 ![Web Logo](Web.png)
 
 This codebase serves as the front end (web) version for the Xtreme Success Project.
